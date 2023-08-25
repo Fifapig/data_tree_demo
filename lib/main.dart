@@ -46,77 +46,93 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: _ContentView(),
+      home: const _ContentView(),
     );
   }
 }
 
-class _ContentView extends StatelessWidget {
-  const _ContentView({
-    super.key,
-  });
+class _ContentView extends StatefulWidget {
+  const _ContentView();
+
+  @override
+  State<_ContentView> createState() => _ContentViewState();
+}
+
+class _ContentViewState extends State<_ContentView> {
+  var extraItems = [
+    DataTree('北京歌华有线电视网络股份有限公司'),
+    DataTree('网宿科技股份有限公司', children: [
+      DataTree('重庆帮龙物资有限公司'),
+      DataTree('天津明朗供应链管理有限公司'),
+      DataTree('重庆佑铨建设安装工程有限公司'),
+    ]),
+    DataTree('烽火通信科技股份有限公司', children: [
+      DataTree('天津峥海新能源技术有限责任公司'),
+      DataTree('重庆帮龙物资有限公司'),
+      DataTree('北京歌华有线电视网络股份有限公司', children: [
+        DataTree('天津明朗供应链管理有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+      ]),
+      DataTree('天津明朗供应链管理有限公司'),
+      DataTree('重庆佑铨建设安装工程有限公司'),
+    ]),
+    DataTree('天津峥海新能源技术有限责任公司'),
+  ];
+
+  var items = [
+    DataTree('北京歌华有线电视网络股份有限公司'),
+    DataTree('烽火通信科技股份有限公司', children: [
+      DataTree('北京歌华有线电视网络股份有限公司', children: [
+        DataTree('天津明朗供应链管理有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+        DataTree('重庆佑铨建设安装工程有限公司'),
+      ]),
+      DataTree('天津峥海新能源技术有限责任公司'),
+      DataTree('重庆帮龙物资有限公司'),
+      DataTree('天津明朗供应链管理有限公司'),
+      DataTree('重庆佑铨建设安装工程有限公司'),
+    ]),
+    DataTree('天津峥海新能源技术有限责任公司'),
+    DataTree('天津峥海新能源技术有限责任公司'),
+    DataTree('天津峥海新能源技术有限责任公司'),
+    DataTree('天津峥海新能源技术有限责任公司'),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    items = dataTreeIndexItems(items);
+    extraItems = dataTreeIndexItems(extraItems);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DataTreeView(
-        extraItems: [
-          DataTree('北京歌华有线电视网络股份有限公司'),
-          DataTree('网宿科技股份有限公司', children: [
-            DataTree('重庆帮龙物资有限公司'),
-            DataTree('天津明朗供应链管理有限公司'),
-            DataTree('重庆佑铨建设安装工程有限公司'),
-          ]),
-          DataTree('烽火通信科技股份有限公司', children: [
-            DataTree('天津峥海新能源技术有限责任公司'),
-            DataTree('重庆帮龙物资有限公司'),
-            DataTree('北京歌华有线电视网络股份有限公司', children: [
-              DataTree('天津明朗供应链管理有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-            ]),
-            DataTree('天津明朗供应链管理有限公司'),
-            DataTree('重庆佑铨建设安装工程有限公司'),
-          ]),
-          DataTree('天津峥海新能源技术有限责任公司'),
-        ],
-        items: [
-          DataTree('北京歌华有线电视网络股份有限公司'),
-          DataTree('烽火通信科技股份有限公司', children: [
-            DataTree('北京歌华有线电视网络股份有限公司', children: [
-              DataTree('天津明朗供应链管理有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-              DataTree('重庆佑铨建设安装工程有限公司'),
-            ]),
-            DataTree('天津峥海新能源技术有限责任公司'),
-            DataTree('重庆帮龙物资有限公司'),
-            DataTree('天津明朗供应链管理有限公司'),
-            DataTree('重庆佑铨建设安装工程有限公司'),
-          ]),
-          DataTree('天津峥海新能源技术有限责任公司'),
-          DataTree('天津峥海新能源技术有限责任公司'),
-          DataTree('天津峥海新能源技术有限责任公司'),
-          DataTree('天津峥海新能源技术有限责任公司'),
-        ],
+        extraItems: extraItems,
+        items: items,
         title: '天津峥海新能源技术有限责任公司',
         onItemsTap: (data, items, indexs) {
+          print('onItemsTap ${data.title} -- $indexs');
           if (data.title.contains('更多')) {
             // 加载更多数据
           } else if (data.isMore) {
@@ -124,6 +140,7 @@ class _ContentView extends StatelessWidget {
           }
         },
         onExtraTap: (data, items, indexs) {
+          print('onExtraTap ${data.title} -- $indexs');
           if (data.title.contains('更多')) {
             // 加载更多数据
           } else if (data.isMore) {

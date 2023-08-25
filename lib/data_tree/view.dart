@@ -475,10 +475,15 @@ class DataTreePainter extends CustomPainter {
   }
 
   /// 绘制列表模块 距离父级模块的 圆点横线
-  ///
-  ///   O----------
-  ///
-  ///   ----------O
+  ///         |
+  ///   O-----|------
+  ///         |
+  /// 
+  /// 
+  ///         |
+  ///   ------|-----O
+  ///         |
+  /// 
   _drawPointLine(Canvas canvas, DataTree item, Rect superBoxRect,
       Matrix4 matrix, bool isRight) {
     final boxRect = item.boxListRect;
